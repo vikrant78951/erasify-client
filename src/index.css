@@ -1,0 +1,40 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    font-family: "Noto Sans", system-ui, sans-serif;
+  }
+}
+
+@layer utilities {
+
+  
+
+  .bg-gradient {
+    background: linear-gradient(
+      to right,
+      theme("colors.primary"),
+      theme("colors.secondary")
+    );
+  }
+  .hover\:bg-gradient:hover {
+    background: linear-gradient(
+      to right,
+      theme("colors.secondary"),
+      theme("colors.primary")
+    );
+  }
+  .bg-pattern {
+    background-color: #f4f2f2;
+    opacity: 0.6;
+    background-image:  repeating-linear-gradient(45deg, #e6e6e6 25%, transparent 25%, transparent 75%, #e6e6e6 75%, #e6e6e6), repeating-linear-gradient(45deg, #e6e6e6 25%, #f4f2f2 25%, #f4f2f2 75%, #e6e6e6 75%, #e6e6e6);
+    background-position: 0 0, 12px 12px;
+    background-size: 24px 24px;
+  }
+
+}
+
+
+ 
