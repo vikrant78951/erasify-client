@@ -168,7 +168,10 @@ export const PRICING_PLANS = [
   },
 ];
 
-export const BACKEND_DOMAIN = "http://localhost:3001";
+export const BACKEND_DOMAIN =
+  process.env.NODE_URL === "production"
+    ? "erasify-server-production.up.railway.app"
+    : "http://localhost:3001";
 export const API = {
   login: `${BACKEND_DOMAIN}/api/v1/auth/login`,
   logout: `${BACKEND_DOMAIN}/api/v1/auth/logout`,
