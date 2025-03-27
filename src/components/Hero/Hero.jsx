@@ -5,7 +5,7 @@ import UploadButton from "../Upload/UploadButton";
 
 const Hero = () => {
   return (
-    <SectionWrapper className="flex flex-col-reverse gap-6 md:flex-row">
+    <SectionWrapper className="flex flex-col gap-6 md:flex-row">
       <div className="w-full md:w-7/12 text-center md:text-left">
         <h1 className="mb-4 text-3xl font-bold text-text-primary sm:text-4xl md:text-5xl xl:text-7xl">
           {HERO_CONTENT.title}

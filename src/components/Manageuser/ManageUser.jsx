@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom";
 import Button from "@components/Button/Button";
 import { MoveRight, Copyright } from "lucide-react";
 
-export default function ManageUser() {
+export default function ManageUser({ callBack }) {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { user, authenticated } = useSelector((state) => state.auth);
@@ -23,9 +23,10 @@ export default function ManageUser() {
     if (!user) {
       fetchSessions();
     }
+    callBack();
   }, []);
 
-  if ((user)) {
+  if (user) {
     return (
       <>
         <li>
@@ -34,7 +35,7 @@ export default function ManageUser() {
             {user?.credits}
           </Button>
         </li>
-        {authenticated && (
+        {authenticated ? (
           <li>
             <div className="group relative inline-block text-left">
               <Button
@@ -45,7 +46,6 @@ export default function ManageUser() {
               >
                 {user.firstName[0]}
               </Button>
-
               <div
                 className="focus:outline-hidden absolute right-0 z-10 hidden origin-top-right group-hover:block"
                 role="menu"
@@ -67,6 +67,15 @@ export default function ManageUser() {
               </div>
             </div>
           </li>
+        ) : (
+          <>
+            <li>
+              <Button variant="outline" onClick={() => navigate("login")}>
+                Get Started
+                <MoveRight className="ml-3" size={20} />
+              </Button>
+            </li>
+          </>
         )}
       </>
     );

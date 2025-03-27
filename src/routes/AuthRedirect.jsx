@@ -13,7 +13,10 @@ const AuthRedirect = ({ children }) => {
   }, [authenticated, loading, navigate]);
 
   if (loading) {
-    return <div>Loading...</div>; 
+    return (
+      <div className="block h-10 w-10 mx-auto mt-4  animate-spin rounded-full border border-cyan-500 text-center text-white border-l-0 border-r-0 ">
+      </div>
+    ); 
   }
 
   return !authenticated ? children : null;

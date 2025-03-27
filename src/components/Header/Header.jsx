@@ -13,8 +13,12 @@ const Header = () => {
     setActiveNav((prev) => !prev);
   };
 
+    const closeNav = () => {
+      setActiveNav(false);
+    };
+
   return (
-    <header className=" bg-surface z-100">
+    <header className="z-100 bg-surface">
       <SectionWrapper>
         <div className="flex justify-between">
           <div className="flex w-full justify-between md:w-fit">
@@ -22,7 +26,7 @@ const Header = () => {
 
             <Menu
               onClick={toggleNav}
-              className="cursor-pointer select-none md:hidden"
+              className="cursor-pointer select-none text-white md:hidden"
             />
           </div>
           <nav
@@ -33,7 +37,7 @@ const Header = () => {
 
               <CircleX
                 onClick={toggleNav}
-                className="cursor-pointer select-none"
+                className="cursor-pointer select-none text-white"
               />
             </div>
 
@@ -44,6 +48,7 @@ const Header = () => {
                     <NavLink
                       to={nav.link}
                       className="text-lg text-text-primary hover:underline"
+                      onClick={toggleNav}
                     >
                       {nav.name}
                     </NavLink>
@@ -51,7 +56,7 @@ const Header = () => {
                 );
               })}
 
-              <ManageUser />
+              <ManageUser callBack={closeNav} />
             </ul>
           </nav>
         </div>
