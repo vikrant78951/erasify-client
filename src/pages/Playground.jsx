@@ -61,6 +61,7 @@ if (!mode){
 
       const formData = new FormData();
       formData.append("file", image);
+      console.log("current mode ", mode);
       if (mode === "production") {
         formData.append("mode", "production");
       } else {
