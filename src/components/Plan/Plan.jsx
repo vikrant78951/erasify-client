@@ -8,6 +8,9 @@ import axios from "axios";
 import { updateCredit } from "../../redux/slices/auth.slice";
 
 const key = import.meta.env.VITE_RAZORPAY_KEY_ID;
+if(!key){
+  console.log('razorpay key not found')
+}
 
 const Plan = ({ data }) => {
   const { authenticated } = useSelector((state) => state.auth);
