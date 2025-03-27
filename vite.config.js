@@ -22,4 +22,9 @@ export default defineConfig({
       "@slice": path.resolve(__dirname, "/src/redux/slices"),
     },
   },
+  define: {
+    VITE_VERCEL_ENV: process.env.VITE_VERCEL_ENV,
+    VITE_RAZORPAY_KEY_ID: process.env.VITE_RAZORPAY_KEY_ID,
+    VITE_RAZORPAY_KEY_SECRET: process.env.VITE_RAZORPAY_KEY_SECRET,
+  },
 });

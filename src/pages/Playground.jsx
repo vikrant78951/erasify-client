@@ -11,7 +11,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { updateCredit } from "../redux/slices/auth.slice";
 import { useNavigate } from "react-router-dom";
 
-const mode = import.meta.env.NODE_ENV;
+const mode = import.meta.env.VITE_VERCEL_ENV;
 if (!mode){
   console.log('mode not found using development')
 }
