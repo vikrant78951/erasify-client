@@ -2,7 +2,7 @@ import PropTypes from "prop-types";
 import { DynamicIcon } from "lucide-react/dynamic";
 import Button from "@components/Button/Button";
 
-const Cards = ({ data = [], type = "steps" }) => {
+const Cards = ({ data = [], type = "steps", handler }) => {
   const containerStyle = "grid gap-6  ";
   const itemStyle = "flex gap-4 md:gap-6 text-sm rounded-xl";
   const iconStyle = "p-1 md:p-2  rounded block h-fit w-fit  ";
@@ -91,21 +91,20 @@ const Cards = ({ data = [], type = "steps" }) => {
                 {item.description}
               </p>
 
-              {item.price && item.credit && (
+              {item.price && item.credits && (
                 <p className={`${priceStyle} ${priceItemStyle[type]}`}>
                   <span className="text-xl font-extrabold md:text-4xl">
-                    {" "}
                     ₹{item.price}
                   </span>
 
                   <span className="text-md font-bold">
-                    /<span className="pl-1">{item.credit} credit</span>
+                    /<span className="pl-1">{item.credits} credits</span>
                   </span>
                 </p>
               )}
 
               {type === "pricing" && (
-                <Button variant="secondary" className="w-full" size='lg'>
+                <Button variant="secondary" className="w-full" size='lg' onClick={()=>handler(item)}>
                   Purchase
                 </Button>
               )}
@@ -120,6 +119,8 @@ const Cards = ({ data = [], type = "steps" }) => {
 Cards.propTypes = {
   data: PropTypes.array,
   type: PropTypes.oneOf(["steps", "testimonial", "pricing", "faq"]),
+  handler: PropTypes.func,
 };
+
 
 export default Cards;

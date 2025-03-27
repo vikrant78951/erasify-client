@@ -11,6 +11,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { updateCredit } from "../redux/slices/auth.slice";
 import { useNavigate } from "react-router-dom";
 
+const mode = import.meta.env.NODE_ENV;
 export const Playground = () => {
   const {
     image: { originalImage },
@@ -42,7 +43,7 @@ export const Playground = () => {
     setLoading(true);
     setError(null);
 
-    if (user.credit === 0) {
+    if (user.credits === 0) {
       navigate("/pricing");
       return;
     }
@@ -57,10 +58,10 @@ export const Playground = () => {
 
     const formData = new FormData();
     formData.append("file", image);
-    if (process.env.NODE_ENV === "development") {
-      formData.append("mode", "testing");
-    } else {
+    if (mode === "production") {
       formData.append("mode", "production");
+    } else {
+      formData.append("mode", "testing");
     }
     try {
       const { data } = await axios.post(API.removeBackground, formData, {

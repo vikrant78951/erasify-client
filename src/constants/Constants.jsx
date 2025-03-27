@@ -1,3 +1,5 @@
+const mode = import.meta.env.VITE_NODE_ENV;
+
 export const APPLICATION_CONFIG = {
   BRAND_NAME: "erasify",
   DEFAULT_CREDIT: 5,
@@ -9,7 +11,8 @@ export const HERO_CONTENT = {
       Remove Image <br />
       <span className="bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
         Backgrounds
-      </span> <br />
+      </span>{" "}
+      <br />
       Instantly with AI
     </>
   ),
@@ -127,51 +130,50 @@ export const FAQ = [
 export const FOOTER_LINKS = [
   {
     name: "Privacy & Policy",
-    link: "/privacy-policy",
+    link: "/policy",
   },
   {
     name: "Terms and Conditions",
-    link: "/terms-and-conditions",
+    link: "/terms",
   },
-  {
-    name: "Contact Us",
-    link: "/contact-us",
-  },
-  {
-    name: "Cookies",
-    link: "/cookies",
-  },
+ 
+
 ];
 
 export const PRICING_PLANS = [
   {
+    id: 1,
     title: "Basic",
     description: "Best for personal Use",
     price: "100",
-    credit: "100",
+    credits: "10",
     icon: "user",
   },
 
   {
+    id: 2,
     title: "Advance",
     description: "Best for Business Use,",
     price: "500",
-    credit: "500",
+    credits: "50",
     icon: "chart-line",
   },
   {
+    id:3,
     title: "Enterprice",
     description: "Best for Enterprice Use,",
     price: "1000",
-    credit: "1000",
+    credits: "100",
     icon: "shield-check",
   },
 ];
 
+
 export const BACKEND_DOMAIN =
-  process.env.NODE_URL === "production"
-    ? "erasify-server-production.up.railway.app"
-    : "http://localhost:3001";
+  mode === "production"
+    ? "https://erasify-server-production.up.railway.app"
+    : "http://localhost:3000";
+
 export const API = {
   login: `${BACKEND_DOMAIN}/api/v1/auth/login`,
   logout: `${BACKEND_DOMAIN}/api/v1/auth/logout`,
@@ -180,6 +182,6 @@ export const API = {
   refreshToken: `${BACKEND_DOMAIN}/api/v1/auth/refreshToken`,
   uuid: `${BACKEND_DOMAIN}/api/v1/auth/uuid`,
   removeBackground: `${BACKEND_DOMAIN}/api/v1/features/remove-background`,
+  order: `${BACKEND_DOMAIN}/api/v1/order`,
+  verify: `${BACKEND_DOMAIN}/api/v1/verify`,
 };
-
-

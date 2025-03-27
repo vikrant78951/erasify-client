@@ -56,7 +56,7 @@ const authSlice = createSlice({
       state.authenticated = true;
     },
     updateCredit: (state, action) => {
-      state.user.credit = action.payload;
+      state.user.credits = action.payload;
     },
   },
   extraReducers: (builder) => {

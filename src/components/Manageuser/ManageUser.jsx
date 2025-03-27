@@ -9,7 +9,7 @@ import { MoveRight, Copyright } from "lucide-react";
 export default function ManageUser() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const { user } = useSelector((state) => state.auth);
+  const { user, authenticated } = useSelector((state) => state.auth);
 
   const fetchSessions = async () => {
     try {
@@ -25,48 +25,49 @@ export default function ManageUser() {
     }
   }, []);
 
-  if (user) {
+  if ((user)) {
     return (
       <>
         <li>
           <Button variant="tertiary" onClick={() => null}>
             <Copyright className="mr-2 text-orange-400" size={20} />
-            {user?.credit}
+            {user?.credits}
           </Button>
         </li>
-        <li>
-          <div className="group relative inline-block text-left">
-            <Button
-              className="h-9 w-9 text-2xl !font-medium"
-              variant="primaryRounded"
-              size="regular"
-              onClick={() => null}
-            >
-              {user.firstName[0]}
-            </Button>
-
-            <div
-              className="focus:outline-hidden absolute right-0 z-10 hidden origin-top-right group-hover:block"
-              role="menu"
-              aria-orientation="vertical"
-              aria-labelledby="menu-button"
-              tabIndex="-1"
-            >
+        {authenticated && (
+          <li>
+            <div className="group relative inline-block text-left">
+              <Button
+                className="h-9 w-9 text-2xl !font-medium"
+                variant="primaryRounded"
+                size="regular"
+                onClick={() => null}
+              >
+                {user.firstName[0]}
+              </Button>
 
               <div
-                className="w-max-content mt-2 cursor-pointer rounded-md bg-tertiary py-1 shadow-lg ring-1 ring-black/5"
-                role="none"
+                className="focus:outline-hidden absolute right-0 z-10 hidden origin-top-right group-hover:block"
+                role="menu"
+                aria-orientation="vertical"
+                aria-labelledby="menu-button"
+                tabIndex="-1"
               >
-                <p
-                  className="block px-4 py-2 text-sm text-text-primary hover:text-primary"
-                  onClick={() => dispatch(logoutUser())}
+                <div
+                  className="w-max-content mt-2 cursor-pointer rounded-md bg-tertiary py-1 shadow-lg ring-1 ring-black/5"
+                  role="none"
                 >
-                  Logout
-                </p>
+                  <p
+                    className="block px-4 py-2 text-sm text-text-primary hover:text-primary"
+                    onClick={() => dispatch(logoutUser())}
+                  >
+                    Logout
+                  </p>
+                </div>
               </div>
             </div>
-          </div>
-        </li>
+          </li>
+        )}
       </>
     );
   }

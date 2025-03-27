@@ -1,6 +1,6 @@
 import { SectionWrapper } from "@components/Wrapper/Wrapper";
 import Logo from "@components/Logo/Logo";
-import {  Menu, CircleX } from "lucide-react";
+import { Menu, CircleX } from "lucide-react";
 import { NavLink } from "react-router-dom";
 import { NAVBAR } from "@constants/Constants";
 import { useState } from "react";
@@ -14,9 +14,9 @@ const Header = () => {
   };
 
   return (
-    <header className="relative">
-      <SectionWrapper className="flex justify-between">
-        <>
+    <header className=" bg-surface z-100">
+      <SectionWrapper>
+        <div className="flex justify-between">
           <div className="flex w-full justify-between md:w-fit">
             <Logo />
 
@@ -25,7 +25,6 @@ const Header = () => {
               className="cursor-pointer select-none md:hidden"
             />
           </div>
-
           <nav
             className={`absolute left-0 top-0 z-10 h-screen w-full bg-surface p-4 md:w-fit ${activeNav ? "block" : "hidden"} md:relative md:flex md:h-auto`}
           >
@@ -51,13 +50,11 @@ const Header = () => {
                   </li>
                 );
               })}
-            
-                
-                <ManageUser/>
-             
+
+              <ManageUser />
             </ul>
           </nav>
-        </>
+        </div>
       </SectionWrapper>
     </header>
   );
